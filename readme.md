@@ -72,10 +72,10 @@ All results are backed by **actual runs**, not theoretical benchmarks.
 | Workflow                           | Execution Time | Notes                                              |
 | ---------------------------------- | -------------- | -------------------------------------------------- |
 | Notebook cluster (3 notebooks)     | **71 sec**     | Fastest; minimal overhead; cluster already running |
-| ADF → Databricks (1 notebook)      | **103 sec**    | ~30 sec orchestration overhead                     |
+| ADF → Databricks (3 notebooks)     | **103 sec**   | ~30 sec orchestration overhead                    |
 | Databricks Workflows (3 notebooks) | **167 sec**    | Sequential orchestration inside Databricks         |
 
-> 📌 Even with **extra cluster setup code**, the notebook cluster approach was the fastest for small workloads.
+> 📌 Even with **extra cluster setup code**, the notebook cluster approach was the fastest for workloads. all other codes were exactly the same.
 ```
 ---
 
@@ -83,11 +83,14 @@ All results are backed by **actual runs**, not theoretical benchmarks.
 
 Using $0.55 / DBU-hour:
 
+```code
+
 | Workflow             | Runtime (sec) | Estimated Cost ($) |
 | -------------------- | ------------- | ------------------ |
 | Notebook cluster     | 71            | ~$0.011            |
 | ADF → Databricks     | 103           | ~$0.016            |
 | Databricks Workflows | 167           | ~$0.025            |
+```
 
 > Cost differences are small for short jobs, but **overhead compounds** at scale and with frequent runs.
 
@@ -139,12 +142,14 @@ This repository includes screenshots proving:
 
 ## 🏗️ Architectural Guidance
 
+```code
 | Use Case                           | Recommended Tool     |
 | ---------------------------------- | -------------------- |
 | Ad-hoc analysis                    | Notebook cluster     |
 | Pure Spark pipelines               | Databricks Workflows |
 | Cross-service orchestration        | ADF                  |
 | Enterprise scheduling & monitoring | ADF + Databricks     |
+```
 
 > **There is no universal winner — only the right tool for the workload.**
 
