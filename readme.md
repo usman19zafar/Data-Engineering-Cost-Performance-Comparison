@@ -72,7 +72,7 @@ All results are backed by **actual runs**, not theoretical benchmarks.
 | Workflow                           | Execution Time | Notes                                              |
 | ---------------------------------- | -------------- | -------------------------------------------------- |
 | Notebook cluster (3 notebooks)     | **71 sec**     | Fastest; minimal overhead; cluster already running |
-| ADF → Databricks (3 notebooks)     | **103 sec**   | ~30 sec orchestration overhead                    |
+| ADF → Databricks (3 notebooks)     | **103 sec**    | ~30 sec orchestration overhead                     |
 | Databricks Workflows (3 notebooks) | **167 sec**    | Sequential orchestration inside Databricks         |
 
 > 📌 Even with **extra cluster setup code**, the notebook cluster approach was the fastest for workloads. all other codes were exactly the same.
